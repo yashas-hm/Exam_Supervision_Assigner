@@ -12,7 +12,7 @@ This program is a simple GUI based system to allocate different faculty to exam 
 ## Steps to use
  - Step 1 :  Download and Install the program from link below.
    <br>
-   [Download Here!!]()
+   [Download Here!!](https://mega.nz/file/6fAwhLYK#KSaYfr9XiiKI0vLTMHqZQUoPdyiIPXjO6rdvndHL8Lo)
  - Step 2 :  Run main.exe to see the screen below.
    <br>
    <p align="center">
@@ -36,6 +36,8 @@ Do not change the heading, including case and spelling<br>
 <p align="center">
     <img src="https://github.com/yashas-hm/Exam_Supervision_Assigner/blob/master/Images/9.png"/>
 </p>
+
+## [User Manual](https://mega.nz/file/2KQwRDbb#wXDWBBevyjlGJXzIi3uqnBdt4oPqfqbDHHVGg-pKxKY)
 
 ## Screenshots of the Program
 <p align="center">
