@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import random
 import Scripts.PopUpManager as PopUpManager
+import time
 
 
 class FacultyAssigner:
@@ -11,29 +12,26 @@ class FacultyAssigner:
         self.input_file_path = input_file_path
         self.destination = destination
         self.df = pd.read_csv(input_file_path)
-        self.faculty_list = self.df.Faculty
+        self.faculty_list = list(self.df.Faculty)
         df = self.df.dropna()
-        self.dates = df.Dates
-        self.slot1 = df.Slot1
-        self.slot2 = df.Slot2
+        self.dates = list(df.Dates)
+        self.slot1 = list(df.Slot1)
+        self.slot2 = list(df.Slot2)
         self.max_occurrence = ((sum(self.slot1) + sum(self.slot2)) // len(self.faculty_list)) + 1
         self.faculty_key = {}
+        for i in self.faculty_list:
+            self.faculty_key[i] = 0
 
     def get_slot(self, slot):
-        faculty_key = {}
-        for i in self.faculty_list:
-            faculty_key[i] = 0
-
         df = pd.DataFrame({})
-
-        for i in self.dates:
+        for i in range(len(self.dates)):
             data = []
-            for _ in slot:
+            for _ in range(int(slot[i])):
                 choice = None
                 while choice is None:
                     faculty = random.choice(self.faculty_list)
-                    if faculty_key[faculty] < self.max_occurrence:
-                        faculty_key[faculty] += 1
+                    if (self.faculty_key[faculty] < self.max_occurrence) and (faculty not in data):
+                        self.faculty_key[faculty] += 1
                         choice = faculty
                     else:
                         continue
@@ -41,7 +39,10 @@ class FacultyAssigner:
                     PopUpManager.error_popup(self.root, 'Some unexpected error occurred')
                 else:
                     data.append(choice)
-            df[i] = data
+            for y in range(len(self.faculty_list)-len(data)):
+                data.append(np.nan)
+            df[self.dates[i]] = data
+        time.sleep(1)
 
         return df
 
