@@ -17,6 +17,7 @@ class FacultyAssigner:
         self.dates = list(df.Dates)
         self.slot1 = list(df.Slot1)
         self.slot2 = list(df.Slot2)
+        self.slot3 = list(df.Slot3)
         self.max_occurrence = ((sum(self.slot1) + sum(self.slot2)) // len(self.faculty_list)) + 1
         self.faculty_key = {}
         for i in self.faculty_list:
@@ -51,7 +52,7 @@ class FacultyAssigner:
         for i in self.dates:
             for j in self.faculty_list:
                 if j in list(slot[i]):
-                    df[i][j] = 'X'
+                    df[i][j] = '✓'
                 else:
                     df[i][j] = np.nan
         return df
